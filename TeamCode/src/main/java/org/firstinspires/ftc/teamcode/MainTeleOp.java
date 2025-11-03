@@ -20,9 +20,11 @@ public class MainTeleOp extends LinearOpMode {
 
         driveLeft = hardwareMap.dcMotor.get("left_drive");
         driveRight = hardwareMap.dcMotor.get("right_drive");
+        shooter = hardwareMap.dcMotor.get("launcher");
         kickerLeft = hardwareMap.get(CRServo.class, "left_feeder");
-        kickerLeft = hardwareMap.get(CRServo.class, "left_feeder");
-
+        kickerRight = hardwareMap.get(CRServo.class, "right_feeder");
+        kickerLeft.setDirection(CRServo.Direction.REVERSE);
+        kickerRight.setDirection(CRServo.Direction.FORWARD);
         driveLeft.setDirection(DcMotor.Direction.REVERSE);
         driveRight.setDirection(DcMotor.Direction.FORWARD);
         driveLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
