@@ -4,12 +4,11 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name = "grook squat TeleOp", group = "32384 Code")
-public class MainTeleOp extends LinearOpMode {
+@TeleOp(name = "old TeleOp", group = "32384 Code")
+public class OldTeleOp extends LinearOpMode {
     // Batch declares the variables used later in the code
     DcMotor frontRight, frontLeft, backRight, backLeft, shooter;
     private IMU imu;
@@ -95,7 +94,6 @@ public class MainTeleOp extends LinearOpMode {
             if (bToggle) { // If B is toggled, the kicker motors turn on; if it is not, they turn off.
                 kickerLeft.setPower(1);
                 kickerRight.setPower(1);
-
             } else {
                 kickerLeft.setPower(0);
                 kickerRight.setPower(0);
