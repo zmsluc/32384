@@ -63,17 +63,6 @@ public class MainAuto extends LinearOpMode {
             waitForStart();
             forward(600);
             sleep(300);
-            frontLeft.setPower(0);
-            frontRight.setPower(0);
-            backLeft.setPower(0);
-            backRight.setPower(0);
-            shoot();
-            sleep(300);
-            shoot();
-            sleep(300);
-            shoot();
-            straferight(600);
-            sleep(300);
 
 
 
