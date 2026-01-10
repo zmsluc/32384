@@ -44,19 +44,18 @@ public class NewTeleOp extends LinearOpMode {
 
 
 
-
         waitForStart();
         aToggle = prevA = bToggle = prevB = yToggle = prevY = false; // Defaults all toggles to false
         shooterPower = 1.5; // Sets the power of the shooter motor
-        reversePower = -.75;
+        reversePower = -.2;
 
         while (opModeIsActive()) {
             // Inside of the opModeIsActive loop, all code loops every ~5-20ms (50-200 times per second)
 
             // Reference variables for gamepad joystick power
             double leftY = -gamepad1.left_stick_y; // leftY is flipped to make the joystick power behave as expected
-            double leftX = -gamepad1.left_stick_x;
-            double rightX = -gamepad1.right_stick_x;
+            double rightX = -gamepad1.left_stick_x;
+            double leftX = -gamepad1.right_stick_x;
 
             frontLeft.setPower(leftY - leftX - rightX);
             frontRight.setPower(leftY + leftX + rightX);
@@ -84,28 +83,26 @@ public class NewTeleOp extends LinearOpMode {
             // Toggles shooter and kicker based off of A and B toggles
             if (aToggle) { // Shooter
                 shooter.setPower(shooterPower);
-                shotTimer.reset();
             } else {
                 shooter.setPower(0);
             }
-            if (yToggle) { // Reverse Transfer/Shooter
+            if (gamepad1.y) { // Reverse Transfer/Shooter
                 shooter.setPower(reversePower);
-                transfer.setPower(reversePower);
-                shotTimer.reset();
+                transfer.setPower(-1);
+                intake.setPower(-.4);
             } else {
                 shooter.setPower(0);
             }
-            if (bToggle) { // Solo Transfer
+            if (gamepad1.b) { // Intake + transfer
                 transfer.setPower(1);
+                intake.setPower(1);
             } else {
                 transfer.setPower(0);
             }
-            if (xToggle) { // Intake + Transfer
+            if (gamepad1.x) { // Solo intake
                 intake.setPower(1);
-                transfer.setPower(1);
             } else {
                 intake.setPower(0);
-                transfer.setPower(0);
             }
 
             // Sets the left and right motor powers based off of the reference variables
